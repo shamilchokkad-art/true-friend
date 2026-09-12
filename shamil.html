@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FRIENDSHIP TEST 😂 — 100% Useless Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ CORE ============ */
+  :root{
+    --bg-1:#150a30; --bg-2:#0a0620; --bg-3:#05070f;
+    --violet:#b026ff; --cyan:#00e5ff; --pink:#ff2d95; --amber:#ffb020; --green:#7cff6b; --red:#ff5c5c; --gold:#ffcf3f;
+    --text:#f4f0ff; --muted:#9b8fc0; --dim:#6f63a0;
+    --stroke:rgba(255,255,255,.12);
+    --glass:linear-gradient(155deg, rgba(255,255,255,.075), rgba(255,255,255,.02));
+    --r-lg:24px; --r-md:16px;
+    --disp:'Space Grotesk',sans-serif;
+    --mono:'Space Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--disp);
+    color:var(--text);
+    min-height:100vh;
+    background:linear-gradient(165deg,var(--bg-1) 0%,var(--bg-2) 46%,var(--bg-3) 100%) fixed;
+    overflow-x:hidden;
+    display:flex; flex-direction:column;
+  }
+  /* faint instrument dot-grid */
+  body::before{
+    content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1.4px);
+    background-size:28px 28px;
+    mask-image:radial-gradient(ellipse at 50% 20%, black 30%, transparent 78%);
+    -webkit-mask-image:radial-gradient(ellipse at 50% 20%, black 30%, transparent 78%);
+  }
+  ::selection{background:rgba(176,38,255,.45)}
+
+  /* ============ BACKGROUND FX ============ */
+  .blob{position:fixed; border-radius:50%; filter:blur(95px); z-index:0; pointer-events:none; opacity:.32; animation:blobFloat 20s ease-in-out infinite alternate}
+  .blob.b1{width:58vmax;height:58vmax; top:-22vmax; left:-16vmax; background:radial-gradient(circle,#7a1fd0,transparent 65%)}
+  .blob.b2{width:46vmax;height:46vmax; top:6vmax; right:-18vmax; background:radial-gradient(circle,#005f7a,transparent 65%); animation-delay:-7s}
+  .blob.b3{width:34vmax;height:34vmax; bottom:-14vmax; left:32vw; background:radial-gradient(circle,#8f1050,transparent 65%); animation-delay:-13s}
+  @keyframes blobFloat{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(5vmax,4vmax) scale(1.12)}
+  }
+  .float-emoji{
+    position:fixed; bottom:-9vh; z-index:0; pointer-events:none;
+    animation:rise linear infinite; user-select:none;
+  }
+  @keyframes rise{
+    from{transform:translateY(0) rotate(-14deg)}
+    50%{transform:translateY(-58vh) rotate(14deg)}
+    to{transform:translateY(-122vh) rotate(-10deg)}
+  }
+
+  /* ============ LAYOUT ============ */
+  .topbar{
+    position:relative; z-index:3;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    max-width:760px; width:100%; margin:0 auto; padding:20px 22px 0;
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.08em;
+    color:var(--muted);
+  }
+  .brand{display:flex; align-items:center; gap:9px; color:var(--text); font-weight:700}
+  .brand .dim{color:var(--dim); font-weight:400}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulseDot 1.6s ease-in-out infinite}
+  @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+  .scan-num{color:var(--cyan)}
+
+  main{
+    position:relative; z-index:2;
+    width:100%; max-width:760px; margin:0 auto;
+    padding:26px 20px 40px; flex:1;
+  }
+
+  .screen{display:none}
+  .screen.active{display:block; animation:screenIn .55s cubic-bezier(.22,1,.36,1)}
+  @keyframes screenIn{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
+
+  .card{
+    background:var(--glass);
+    backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+    border:1px solid var(--stroke);
+    border-radius:var(--r-lg);
+    box-shadow:0 28px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.09);
+  }
+
+  /* ============ HOME ============ */
+  .kicker{
+    text-align:center; font-family:var(--mono); font-size:.7rem; letter-spacing:.22em;
+    color:var(--cyan); text-transform:uppercase; margin-bottom:16px;
+    text-shadow:0 0 14px rgba(0,229,255,.5);
+  }
+  .hero-title{
+    text-align:center; font-weight:700; line-height:1.02;
+    font-size:clamp(2.7rem, 9.5vw, 5.4rem); letter-spacing:-.02em;
+    text-shadow:0 0 34px rgba(176,38,255,.45), 0 0 90px rgba(176,38,255,.2);
+    margin-bottom:14px;
+  }
+  .hero-title .grad{
+    background:linear-gradient(95deg,var(--violet),var(--cyan) 55%,var(--pink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 22px rgba(176,38,255,.4));
+  }
+  .hero-title .lol{display:inline-block; animation:wiggle 2.4s ease-in-out infinite; transform-origin:70% 70%}
+  @keyframes wiggle{0%,100%{transform:rotate(-8deg) scale(1)}50%{transform:rotate(9deg) scale(1.12)}}
+  .hero-sub{
+    text-align:center; color:var(--muted); font-size:clamp(1rem,2.6vw,1.15rem);
+    max-width:34rem; margin:0 auto 34px; line-height:1.55;
+  }
+
+  .input-card{padding:clamp(22px,4.5vw,36px)}
+  .duo{display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:center; margin-bottom:26px}
+  .field label{
+    display:flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.18em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:9px;
+  }
+  .field input{
+    width:100%; padding:15px 16px; border-radius:var(--r-md);
+    background:rgba(6,4,18,.55); border:1px solid var(--stroke);
+    color:var(--text); font-family:var(--disp); font-weight:600; font-size:1.05rem;
+    outline:none; transition:border-color .25s, box-shadow .25s, background .25s;
+  }
+  .field input::placeholder{color:var(--dim); font-weight:400}
+  .field input:focus{border-color:var(--violet); box-shadow:0 0 0 3px rgba(176,38,255,.18), 0 0 22px rgba(176,38,255,.25); background:rgba(10,6,28,.7)}
+  .field input.bad{border-color:var(--red); animation:shake .45s}
+  @keyframes shake{
+    0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)}
+    40%{transform:translateX(6px)} 60%{transform:translateX(-5px)} 80%{transform:translateX(4px)}
+  }
+  .vs{
+    width:46px;height:46px;border-radius:50%;
+    display:grid;place-items:center;
+    font-family:var(--mono); font-weight:700; font-size:.82rem;
+    color:var(--pink); border:1px solid rgba(255,45,149,.45);
+    background:rgba(255,45,149,.08);
+    box-shadow:0 0 18px rgba(255,45,149,.3);
+    animation:vsPulse 2.2s ease-in-out infinite;
+  }
+  @keyframes vsPulse{0%,100%{box-shadow:0 0 12px rgba(255,45,149,.25)}50%{box-shadow:0 0 26px rgba(255,45,149,.55)}}
+
+  .btn{
+    font-family:var(--disp); font-weight:700; letter-spacing:.02em;
+    border:none; cursor:pointer; border-radius:var(--r-md);
+    transition:transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, background .25s, border-color .25s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .btn:focus-visible{outline:2px solid var(--cyan); outline-offset:3px}
+  .btn:active{transform:scale(.97)}
+  .btn-main{
+    width:100%; padding:19px; font-size:clamp(1.05rem,3vw,1.3rem); color:#fff; position:relative; overflow:hidden;
+    background:linear-gradient(95deg,#8a1fd6,#b026ff 45%,#ff2d95);
+    box-shadow:0 10px 34px rgba(176,38,255,.4), inset 0 1px 0 rgba(255,255,255,.22);
+    animation:btnBreath 3s ease-in-out infinite;
+  }
+  @keyframes btnBreath{0%,100%{box-shadow:0 10px 34px rgba(176,38,255,.35), inset 0 1px 0 rgba(255,255,255,.22)}50%{box-shadow:0 10px 46px rgba(255,45,149,.5), inset 0 1px 0 rgba(255,255,255,.22)}}
+  .btn-main:hover{transform:translateY(-3px)}
+  .btn-main::after{
+    content:''; position:absolute; top:0; left:-80%; width:50%; height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);
+    transform:skewX(-20deg); transition:left .6s ease;
+  }
+  .btn-main:hover::after{left:130%}
+  .fine{
+    text-align:center; font-family:var(--mono); font-size:.66rem; color:var(--dim);
+    margin-top:18px; letter-spacing:.05em; line-height:1.7;
+  }
+
+  /* ============ LOADING ============ */
+  .load-head{
+    text-align:center; font-family:var(--mono); letter-spacing:.2em;
+    font-size:clamp(.78rem,2.4vw,.95rem); color:var(--cyan);
+    text-shadow:0 0 16px rgba(0,229,255,.55); margin-bottom:22px;
+  }
+  .cursor{display:inline-block; animation:blink .85s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .load-card{padding:clamp(20px,4vw,30px)}
+  .ecg-wrap{position:relative; border-radius:var(--r-md); overflow:hidden; border:1px solid var(--stroke); background:rgba(4,3,14,.6); margin-bottom:20px}
+  .ecg-label{
+    position:absolute; top:10px; left:14px; z-index:1;
+    font-family:var(--mono); font-size:.62rem; letter-spacing:.16em; color:var(--muted);
+  }
+  .ecg-live{position:absolute; top:10px; right:14px; z-index:1; font-family:var(--mono); font-size:.62rem; color:var(--red); letter-spacing:.14em; display:flex; align-items:center; gap:6px}
+  .ecg-live i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);animation:pulseDot 1s infinite}
+  #ecg{display:block; width:100%; height:96px}
+  .term{min-height:132px; font-family:var(--mono); font-size:clamp(.78rem,2.4vw,.88rem); line-height:2.05; color:var(--text); margin-bottom:22px}
+  .tline{opacity:0; animation:lineIn .3s ease forwards}
+  @keyframes lineIn{to{opacity:1}}
+  .tprompt{color:var(--violet); font-weight:700; margin-right:8px}
+  .tcheck{color:var(--dim); margin-left:8px}
+  .tcheck.done{color:var(--green); text-shadow:0 0 10px rgba(124,255,107,.6)}
+  .loadbar-track{height:12px; border-radius:99px; background:rgba(6,4,18,.7); border:1px solid var(--stroke); overflow:hidden}
+  .loadbar-fill{
+    height:100%; width:0%; border-radius:99px;
+    background:linear-gradient(90deg,var(--violet),var(--cyan),var(--pink));
+    box-shadow:0 0 16px rgba(176,38,255,.7);
+    transition:width 2.8s cubic-bezier(.3,.6,.4,1);
+  }
+  .loadpct-row{display:flex; justify-content:space-between; margin-top:9px; font-family:var(--mono); font-size:.68rem; color:var(--muted); letter-spacing:.1em}
+
+  /* ============ RESULT ============ */
+  .res-head{
+    display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; margin-bottom:22px;
+  }
+  .res-ok{color:var(--green); text-shadow:0 0 12px rgba(124,255,107,.5)}
+  .res-id{color:var(--dim)}
+  .res-card{padding:clamp(22px,4.5vw,38px)}
+
+  .names-row{
+    display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;
+    font-weight:700; font-size:clamp(1.25rem,4.6vw,2rem); text-align:center; margin-bottom:26px;
+  }
+  .names-row .x{color:var(--pink); font-family:var(--mono); font-size:.7em; text-shadow:0 0 14px rgba(255,45,149,.7)}
+
+  .pct-block{text-align:center; margin-bottom:8px}
+  #bigPct{
+    font-family:var(--mono); font-weight:700; line-height:1;
+    font-size:clamp(4.4rem,17vw,7.6rem); letter-spacing:-.04em;
+    background:linear-gradient(100deg,var(--violet) 10%,var(--cyan) 50%,var(--pink) 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 0 30px rgba(176,38,255,.45));
+  }
+  #bigPct .sym{font-size:.42em; letter-spacing:0}
+  .pct-caption{font-family:var(--mono); font-size:.66rem; letter-spacing:.28em; color:var(--muted); text-transform:uppercase; margin-top:6px}
+
+  .cat-chip{
+    display:inline-block; margin:20px auto 6px; padding:11px 22px;
+    border-radius:99px; font-weight:700; font-size:clamp(1rem,3.4vw,1.3rem);
+    border:1px solid var(--tier,#fff); color:var(--tier,#fff);
+    background:color-mix(in srgb, var(--tier,#fff) 10%, transparent);
+    box-shadow:0 0 26px color-mix(in srgb, var(--tier,#fff) 35%, transparent);
+    opacity:0; transform:scale(.6);
+  }
+  .cat-chip.pop{animation:chipPop .55s cubic-bezier(.34,1.6,.64,1) forwards}
+  @keyframes chipPop{to{opacity:1; transform:scale(1)}}
+  .cat-row{text-align:center}
+
+  .prog-track{height:16px; border-radius:99px; background:rgba(6,4,18,.7); border:1px solid var(--stroke); overflow:hidden; margin:24px 0 6px}
+  .prog-fill{
+    height:100%; width:0%; border-radius:99px;
+    background:linear-gradient(90deg,var(--violet),var(--cyan) 55%,var(--pink));
+    box-shadow:0 0 18px rgba(0,229,255,.6);
+    transition:width 1.5s cubic-bezier(.25,1,.4,1);
+  }
+  .prog-lbl{display:flex; justify-content:space-between; font-family:var(--mono); font-size:.64rem; color:var(--dim); letter-spacing:.12em}
+
+  .comment{
+    margin:26px 0; padding:15px 18px 15px 20px;
+    border-left:3px solid var(--pink); border-radius:0 var(--r-md) var(--r-md) 0;
+    background:rgba(255,45,149,.06);
+    font-size:clamp(1rem,2.8vw,1.12rem); line-height:1.6; color:#ffe6f3;
+    opacity:0; transform:translateX(-14px); transition:opacity .5s ease, transform .5s ease;
+  }
+  .comment.in{opacity:1; transform:none}
+  .comment .q{color:var(--pink); font-weight:700}
+
+  /* meter */
+  .meter-sec{margin:30px 0 8px}
+  .sec-title{
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:16px; display:flex; align-items:center; gap:12px;
+  }
+  .sec-title::after{content:''; flex:1; height:1px; background:linear-gradient(90deg,var(--stroke),transparent)}
+  .track{
+    position:relative; height:15px; border-radius:99px; border:1px solid var(--stroke);
+    background:linear-gradient(90deg,
+      rgba(155,143,192,.22) 0 25%,
+      rgba(0,229,255,.26) 25% 50%,
+      rgba(176,38,255,.32) 50% 75%,
+      rgba(255,45,149,.38) 75% 100%);
+    box-shadow:inset 0 2px 8px rgba(0,0,0,.5);
+  }
+  .needle{
+    position:absolute; top:-9px; bottom:-9px; left:0%; width:3px;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg,#fff,var(--cyan));
+    border-radius:99px; box-shadow:0 0 14px rgba(0,229,255,.9), 0 0 4px #fff;
+    transition:left 1.9s cubic-bezier(.22,1.15,.32,1);
+  }
+  .needle::before{
+    content:''; position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+    width:13px; height:13px; border-radius:50%; background:#fff;
+    box-shadow:0 0 16px var(--cyan), 0 0 6px #fff;
+  }
+  .zones{display:flex; margin-top:13px}
+  .zones span{
+    flex:1; text-align:center; font-family:var(--mono); font-size:clamp(.52rem,1.9vw,.66rem);
+    letter-spacing:.12em; color:var(--dim); transition:color .4s, text-shadow .4s;
+  }
+  .zones span.on{font-weight:700; text-shadow:0 0 12px currentColor}
+
+  /* fake science */
+  .sci{margin-top:32px; padding-top:26px; border-top:1px solid var(--stroke)}
+  .stat{margin-bottom:15px}
+  .stat-top{display:flex; justify-content:space-between; align-items:baseline; font-family:var(--mono); font-size:clamp(.68rem,2.2vw,.78rem); margin-bottom:7px}
+  .stat-top .lbl{color:var(--muted); letter-spacing:.06em}
+  .stat-top .val{font-weight:700; color:var(--sc,#fff); text-shadow:0 0 12px color-mix(in srgb, var(--sc,#fff) 60%, transparent)}
+  .stat-track{height:8px; border-radius:99px; background:rgba(6,4,18,.7); border:1px solid rgba(255,255,255,.07); overflow:hidden}
+  .stat-fill{
+    height:100%; width:0%; border-radius:99px; background:var(--sc,#fff);
+    box-shadow:0 0 10px var(--sc,#fff);
+    transition:width .9s cubic-bezier(.25,1,.4,1);
+  }
+  .sci-meta{
+    margin-top:20px; font-family:var(--mono); font-size:.62rem; color:var(--dim);
+    letter-spacing:.06em; line-height:1.9; border-top:1px dashed rgba(255,255,255,.1); padding-top:14px;
+  }
+
+  .res-actions{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap}
+  .res-actions .btn{flex:1; min-width:190px; padding:16px; font-size:1.02rem}
+  .btn-ghost{
+    background:transparent; color:var(--text); border:1px solid var(--stroke);
+  }
+  .btn-ghost:hover{border-color:var(--cyan); box-shadow:0 0 20px rgba(0,229,255,.25); transform:translateY(-2px)}
+  .btn-share{
+    color:#fff; background:linear-gradient(95deg,#7a1fd0,#b026ff 55%,#ff2d95);
+    box-shadow:0 8px 26px rgba(176,38,255,.4), inset 0 1px 0 rgba(255,255,255,.2);
+  }
+  .btn-share:hover{transform:translateY(-2px); box-shadow:0 12px 36px rgba(255,45,149,.5)}
+
+  /* ============ FOOTER / TOAST ============ */
+  footer{
+    position:relative; z-index:2; max-width:640px; margin:0 auto; width:100%;
+    padding:0 22px 34px; text-align:center;
+  }
+  .disclaimer{
+    font-size:.78rem; color:var(--dim); line-height:1.75;
+    background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);
+    border-radius:var(--r-md); padding:14px 18px;
+  }
+  #toast{
+    position:fixed; left:50%; bottom:28px; z-index:50;
+    transform:translate(-50%, 80px); opacity:0;
+    background:rgba(14,8,32,.85); backdrop-filter:blur(14px);
+    border:1px solid rgba(0,229,255,.4); border-radius:99px;
+    padding:12px 24px; font-weight:600; font-size:.92rem; color:var(--text);
+    box-shadow:0 10px 40px rgba(0,0,0,.6), 0 0 24px rgba(0,229,255,.25);
+    transition:transform .4s cubic-bezier(.34,1.4,.64,1), opacity .35s;
+    pointer-events:none; max-width:88vw; text-align:center;
+  }
+  #toast.show{transform:translate(-50%,0); opacity:1}
+
+  #fx{position:fixed; inset:0; z-index:40; pointer-events:none}
+
+  @media (max-width:560px){
+    .duo{grid-template-columns:1fr}
+    .vs{justify-self:center}
+    .topbar{font-size:.62rem; padding-top:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div id="emojiLayer" aria-hidden="true"></div>
+  <canvas id="fx" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="brand"><span class="live-dot"></span>FRND-LAB <span class="dim">// TERMINAL v0.0.1</span></div>
+    <div>SCANS TODAY: <span class="scan-num" id="scanNum">000000</span></div>
+  </header>
+
+  <main>
+
+    <!-- ================= HOME ================= -->
+    <section id="screen-home" class="screen active">
+      <p class="kicker">▲ AI-Powered Friendship Analyzer — results legally meaningless</p>
+      <h1 class="hero-title">FRIENDSHIP <span class="grad">TEST</span> <span class="lol">😂</span></h1>
+      <p class="hero-sub">Discover the scientifically questionable truth about your friendship! Our revolutionary algorithm consults zero scientists and regrets nothing.</p>
+
+      <div class="card input-card">
+        <div class="duo">
+          <div class="field">
+            <label for="name1">🤝 Friend 01</label>
+            <input id="name1" type="text" maxlength="20" placeholder="Enter Friend 1 Name" autocomplete="off">
+          </div>
+          <div class="vs" aria-hidden="true">VS</div>
+          <div class="field">
+            <label for="name2">💀 Friend 02</label>
+            <input id="name2" type="text" maxlength="20" placeholder="Enter Friend 2 Name" autocomplete="off">
+          </div>
+        </div>
+        <button class="btn btn-main" id="startBtn">TEST OUR FRIENDSHIP 💀</button>
+        <p class="fine">* powered by FRND-NET v0.0.1 · trained on 0 friendships · confidence: unshakeable, accuracy: absent</p>
+      </div>
+    </section>
+
+    <!-- ================= LOADING ================= -->
+    <section id="screen-loading" class="screen">
+      <p class="load-head">FRIENDSHIP ANALYSIS IN PROGRESS <span class="cursor">▌</span></p>
+      <div class="card load-card">
+        <div class="ecg-wrap">
+          <span class="ecg-label">LIVE FRIENDSHIP FREQUENCY</span>
+          <span class="ecg-live"><i></i>REC</span>
+          <canvas id="ecg"></canvas>
+        </div>
+        <div class="term" id="termLines"></div>
+        <div class="loadbar-track"><div class="loadbar-fill" id="loadFill"></div></div>
+        <div class="loadpct-row"><span>CALIBRATING NONSENSE…</span><span id="loadPct">0%</span></div>
+      </div>
+    </section>
+
+    <!-- ================= RESULT ================= -->
+    <section id="screen-result" class="screen">
+      <div class="res-head">
+        <span class="res-ok">✓ ANALYSIS COMPLETE</span>
+        <span class="res-id" id="scanId">SCAN-000000</span>
+      </div>
+
+      <div class="card res-card">
+        <div class="names-row" id="namesRow"></div>
+
+        <div class="pct-block">
+          <div id="bigPct">0<span class="sym">%</span></div>
+          <div class="pct-caption">Friendship Compatibility Score</div>
+        </div>
+
+        <div class="cat-row"><span class="cat-chip" id="catChip"></span></div>
+
+        <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+        <div class="prog-lbl"><span>TOTAL STRANGERS</span><span>TELEPATHIC BOND</span></div>
+
+        <div class="comment" id="commentBox"></div>
+
+        <div class="meter-sec">
+          <div class="sec-title">Friendship Meter</div>
+          <div class="track"><div class="needle" id="needle"></div></div>
+          <div class="zones" id="zoneLabels">
+            <span data-z="0" style="color:var(--dim)">STRANGERS</span>
+            <span data-z="1" style="color:var(--dim)">FRIENDS</span>
+            <span data-z="2" style="color:var(--dim)">BESTIES</span>
+            <span data-z="3" style="color:var(--dim)">LEGENDS</span>
+          </div>
+        </div>
+
+        <div class="sci">
+          <div class="sec-title">Official Scientific Analysis 🧪</div>
+          <div id="statList"></div>
+          <div class="sci-meta" id="sciMeta"></div>
+        </div>
+
+        <div class="res-actions">
+          <button class="btn btn-ghost" id="againBtn">TEST AGAIN 🔄</button>
+          <button class="btn btn-share" id="shareBtn">SHARE RESULT 📤</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="disclaimer">⚠️ Disclaimer: This website is 100% useless. Results are randomly generated and have absolutely no scientific accuracy. Please don't end a friendship because of this website. 😂</p>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ================================================================
+   FRIENDSHIP TEST 😂 — deliberately useless since 2024
+   ================================================================ */
+const $ = s => document.querySelector(s);
+const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+
+/* ---------- floating background emojis ---------- */
+const FLOATERS = ['😂','🫂','💀','🤝','❤️','👀','🔥'];
+for (let i = 0; i < 14; i++) {
+  const e = document.createElement('span');
+  e.className = 'float-emoji';
+  e.textContent = pick(FLOATERS);
+  e.style.left = (Math.random() * 100) + 'vw';
+  e.style.fontSize = (14 + Math.random() * 26) + 'px';
+  e.style.opacity = (0.1 + Math.random() * 0.16).toFixed(2);
+  e.style.animationDuration = (13 + Math.random() * 15) + 's';
+  e.style.animationDelay = (-Math.random() * 25) + 's';
+  $('#emojiLayer').appendChild(e);
+}
+
+/* ---------- screen manager ---------- */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.toggle('active', s.id === id));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* ---------- scan counter (fake lab stats) ---------- */
+let scanCount = rand(1200, 2100);
+function updateScanCounter() {
+  $('#scanNum').textContent = String(scanCount).padStart(6, '0');
+}
+updateScanCounter();
+
+/* ---------- input validation ---------- */
+function shakeInput(input) {
+  input.classList.remove('bad');
+  void input.offsetWidth; // restart animation
+  input.classList.add('bad');
+  input.addEventListener('animationend', () => input.classList.remove('bad'), { once: true });
+}
+
+/* ---------- loading sequence ---------- */
+const LOAD_MSGS = [
+  'Analyzing friendship history…',
+  'Checking who replies late…',
+  'Scanning WhatsApp messages…',
+  'Consulting absolutely no scientists…'
+];
+
+let ecgRunning = false;
+function startECG() {
+  const cvs = $('#ecg'), ctx = cvs.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  cvs.width = cvs.clientWidth * dpr;
+  cvs.height = 96 * dpr;
+  ctx.scale(dpr, dpr);
+  const W = cvs.clientWidth, H = 96, MID = H / 2;
+  const pts = new Array(W).fill(MID);
+  let t = 0, spikeCountdown = rand(20, 60);
+  ecgRunning = true;
+
+  (function draw() {
+    if (!ecgRunning) return;
+    t += 0.25;
+    let y = MID + Math.sin(t * 0.5) * 5 + Math.sin(t * 1.7) * 3 + (Math.random() - 0.5) * 2.5;
+    if (--spikeCountdown <= 0) {           // dramatic random spike 😂
+      y = MID + (Math.random() > 0.5 ? -1 : 1) * rand(22, 40);
+      spikeCountdown = rand(18, 55);
+    }
+    pts.push(y); pts.shift();
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.beginPath();
+    pts.forEach((p, i) => i === 0 ? ctx.moveTo(i, p) : ctx.lineTo(i, p));
+    ctx.strokeStyle = '#00e5ff';
+    ctx.lineWidth = 2;
+    ctx.shadowColor = '#00e5ff';
+    ctx.shadowBlur = 12;
+    ctx.stroke();
+    requestAnimationFrame(draw);
+  })();
+}
+
+function runLoading() {
+  return new Promise(resolve => {
+    showScreen('screen-loading');
+    startECG();
+
+    const term = $('#termLines');
+    const fill = $('#loadFill');
+    const pctEl = $('#loadPct');
+    term.innerHTML = '';
+    fill.style.transition = 'none';
+    fill.style.width = '0%';
+    void fill.offsetWidth;
+    fill.style.transition = 'width 2.8s cubic-bezier(.3,.6,.4,1)';
+    fill.style.width = '100%';
+
+    /* % counter synced with the bar */
+    const t0 = performance.now(), DUR = 2800;
+    (function tick(now) {
+      const p = Math.min(1, (now - t0) / DUR);
+      pctEl.textContent = Math.round(p * 100) + '%';
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+
+    LOAD_MSGS.forEach((msg, i) => {
+      setTimeout(() => {
+        const line = document.createElement('div');
+        line.className = 'tline';
+        line.innerHTML = `<span class="tprompt">></span>${msg}<span class="tcheck">…</span>`;
+        term.appendChild(line);
+        setTimeout(() => {
+          const c = line.querySelector('.tcheck');
+          c.textContent = ' ✓';
+          c.classList.add('done');
+        }, 520);
+      }, i * 640);
+    });
+
+    setTimeout(() => { ecgRunning = false; resolve(); }, 2950);
+  });
+}
+
+/* ---------- result data ---------- */
+const CATEGORIES = [
+  { min: 90, label: 'BEST FRIENDS FOREVER 🫂', tier: 'gold',  zone: 3 },
+  { min: 75, label: 'Pretty Good Friends 😎',  tier: 'pink',  zone: 2 },
+  { min: 50, label: 'Normal Friends 🙂',       tier: 'cyan',  zone: 1 },
+  { min: 25, label: 'Suspicious Friendship 👀',tier: 'amber', zone: 0 },
+  { min: 1,  label: 'Bro… Who Are You? 💀',    tier: 'red',   zone: 0 }
+];
+const TIER_COLOR = { gold: 'var(--gold)', pink: 'var(--pink)', cyan: 'var(--cyan)', amber: 'var(--amber)', red: 'var(--red)' };
+const ZONE_COLOR = ['var(--dim)', 'var(--cyan)', 'var(--violet)', 'var(--pink)'];
+
+const COMMENTS = [
+  'One of you definitely leaves the other on seen.',
+  'Friendship detected. Trust level questionable.',
+  'You two share approximately 3 brain cells.',
+  'NASA has been notified about this friendship.',
+  'This friendship requires further investigation.',
+  'You are friends because nobody else was available.',
+  'The friendship algorithm is confused.',
+  'Congratulations! You passed absolutely nothing.',
+  'Certified by the International Bureau of Useless Studies.',
+  'This bond has a 50% chance of surviving one (1) group project.',
+  'Scientists ran the numbers twice. They laughed both times.'
+];
+
+const STATS_DEF = [
+  { label: 'Friendship Level',                color: 'var(--violet)' },
+  { label: 'Trust Level',                     color: 'var(--cyan)' },
+  { label: 'Annoyance Level',                 color: 'var(--pink)' },
+  { label: 'Reply Speed',                     color: 'var(--amber)' },
+  { label: 'Chance of Fighting Over Nothing', color: 'var(--red)' },
+  { label: 'Shared Brain Cells',              color: 'var(--green)' }
+];
+
+let last = null;   // stores latest result for sharing
+
+/* ---------- count-up animation ---------- */
+function countUp(el, target, dur, done) {
+  const t0 = performance.now();
+  (function frame(now) {
+    const p = Math.min(1, (now - t0) / dur);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.innerHTML = Math.round(eased * target) + '<span class="sym">%</span>';
+    if (p < 1) requestAnimationFrame(frame);
+    else if (done) done();
+  })(t0);
+}
+
+/* ---------- render result ---------- */
+function renderResult(n1, n2) {
+  const pct = rand(1, 100);
+  const cat = CATEGORIES.find(c => pct >= c.min);
+  const comment = pick(COMMENTS);
+  last = { n1, n2, pct, cat, comment };
+
+  scanCount++;
+  updateScanCounter();
+  $('#scanId').textContent = 'SCAN-' + rand(0x100000, 0xFFFFFF).toString(16).toUpperCase();
+
+  /* names */
+  const safe = s => s.replace(/[<>&]/g, '');
+  $('#namesRow').innerHTML =
+    `<span>${safe(n1)}</span><span class="x">✕</span><span>${safe(n2)}</span>`;
+
+  /* reset dynamic bits */
+  const chip = $('#catChip');
+  chip.className = 'cat-chip';
+  chip.textContent = '';
+  $('#progFill').style.width = '0%';
+  $('#needle').style.left = '0%';
+  $('#commentBox').classList.remove('in');
+  document.querySelectorAll('#zoneLabels span').forEach(z => {
+    z.classList.remove('on'); z.style.color = 'var(--dim)';
+  });
+
+  showScreen('screen-result');
+
+  /* big % + progress bar together */
+  requestAnimationFrame(() => {
+    $('#progFill').style.width = pct + '%';
+    countUp($('#bigPct'), pct, 1500, () => {
+      /* category chip pops */
+      chip.textContent = cat.label;
+      chip.style.setProperty('--tier', TIER_COLOR[cat.tier]);
+      chip.classList.add('pop');
+
+      /* funny comment slides in */
+      $('#commentBox').innerHTML = `<span class="q">“</span>${comment}<span class="q">”</span>`;
+      $('#commentBox').classList.add('in');
+
+      /* meter needle glides + zone lights up */
+      $('#needle').style.left = pct + '%';
+      const zones = document.querySelectorAll('#zoneLabels span');
+      zones.forEach(z => z.classList.remove('on'));
+      const active = zones[Math.min(3, Math.floor(pct / 25))];
+      active.classList.add('on');
+      active.style.color = ZONE_COLOR[Math.min(3, Math.floor(pct / 25))];
+    });
+  });
+
+  /* fake science stats */
+  const list = $('#statList');
+  list.innerHTML = '';
+  const values = STATS_DEF.map((s, i) => i === 0 ? pct : rand(1, 100));
+  STATS_DEF.forEach((s, i) => {
+    const row = document.createElement('div');
+    row.className = 'stat';
+    row.innerHTML = `
+      <div class="stat-top">
+        <span class="lbl">${s.label}</span>
+        <span class="val" style="--sc:${s.color}">0%</span>
+      </div>
+      <div class="stat-track"><div class="stat-fill" style="--sc:${s.color}"></div></div>`;
+    list.appendChild(row);
+    setTimeout(() => {
+      row.querySelector('.val').textContent = values[i] + '%';
+      row.querySelector('.stat-fill').style.width = values[i] + '%';
+    }, 900 + i * 140);
+  });
+
+  $('#sciMeta').innerHTML =
+    `SAMPLE SIZE: 2 humans · CONFIDENCE: 0.0% · PEER REVIEW: declined · ` +
+    `MODEL: FRND-NET v0.0.1 (unstable) · LAB CONDITIONS: vibes`;
+
+  /* emoji confetti 🎉 (the good kind of useless) */
+  setTimeout(() => {
+    const rect = document.querySelector('.res-card').getBoundingClientRect();
+    burst(rect.left + rect.width / 2, rect.top + 60);
+    setTimeout(() => burst(rand(80, innerWidth - 80), rect.top + 140), 260);
+  }, 1600);
+}
+
+/* ---------- start / reset ---------- */
+let running = false;
+function startTest() {
+  if (running) return;
+  const n1 = $('#name1').value.trim();
+  const n2 = $('#name2').value.trim();
+  let ok = true;
+  if (!n1) { shakeInput($('#name1')); ok = false; }
+  if (!n2) { shakeInput($('#name2')); ok = false; }
+  if (!ok) { toast('Bro… we need BOTH names 🙃'); return; }
+  running = true;
+  runLoading().then(() => { renderResult(n1, n2); running = false; });
+}
+
+ $('#startBtn').addEventListener('click', startTest);
+[$('#name1'), $('#name2')].forEach(i =>
+  i.addEventListener('keydown', e => { if (e.key === 'Enter') startTest(); })
+);
+
+ $('#againBtn').addEventListener('click', () => {
+  $('#name1').value = '';
+  $('#name2').value = '';
+  showScreen('screen-home');
+  $('#name1').focus();
+  toast('Fresh start! Ruin another friendship 🔄');
+});
+
+/* ---------- share / copy ---------- */
+ $('#shareBtn').addEventListener('click', async () => {
+  if (!last) return;
+  const text = `😂 My friendship score with ${last.n1} is ${last.pct}%! ` +
+               `We are officially "${last.cat.label}"! ${last.comment}`;
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'FRIENDSHIP TEST 😂', text });
+      toast('Shared successfully 🚀');
+    } catch (err) {
+      if (err.name !== 'AbortError') copyText(text);
+    }
+  } else {
+    copyText(text);
+  }
+});
+
+function copyText(text) {
+  const done = () => toast('Result copied to clipboard 📋');
+  const fail = () => toast('Copy failed — screenshot it instead 😅');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => legacyCopy(text, done, fail));
+  } else {
+    legacyCopy(text, done, fail);
+  }
+}
+function legacyCopy(text, done, fail) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); done(); } catch (e) { fail(); }
+  ta.remove();
+}
+
+/* ---------- emoji confetti canvas ---------- */
+const fxCanvas = $('#fx'), fxCtx = fxCanvas.getContext('2d');
+let fxParts = [], fxOn = false;
+function sizeFx() {
+  const dpr = window.devicePixelRatio || 1;
+  fxCanvas.width = innerWidth * dpr;
+  fxCanvas.height = innerHeight * dpr;
+  fxCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+sizeFx();
+addEventListener('resize', sizeFx);
+
+function burst(x, y) {
+  for (let i = 0; i < 26; i++) {
+    fxParts.push({
+      x, y,
+      vx: (Math.random() - 0.5) * 8,
+      vy: -(3.5 + Math.random() * 7.5),
+      rot: Math.random() * Math.PI,
+      vr: (Math.random() - 0.5) * 0.28,
+      size: 17 + Math.random() * 15,
+      emoji: pick(FLOATERS),
+      life: 1,
+      decay: 0.008 + Math.random() * 0.007
+    });
+  }
+  if (!fxOn) fxLoop();
+}
+function fxLoop() {
+  fxOn = true;
+  fxCtx.clearRect(0, 0, innerWidth, innerHeight);
+  fxParts.forEach(p => {
+    p.vy += 0.22; p.x += p.vx; p.y += p.vy;
+    p.rot += p.vr; p.life -= p.decay;
+    fxCtx.save();
+    fxCtx.translate(p.x, p.y);
+    fxCtx.rotate(p.rot);
+    fxCtx.globalAlpha = Math.max(0, p.life);
+    fxCtx.font = p.size + 'px serif';
+    fxCtx.textAlign = 'center';
+    fxCtx.fillText(p.emoji, 0, 0);
+    fxCtx.restore();
+  });
+  fxParts = fxParts.filter(p => p.life > 0 && p.y < innerHeight + 60);
+  if (fxParts.length) requestAnimationFrame(fxLoop);
+  else { fxOn = false; fxCtx.clearRect(0, 0, innerWidth, innerHeight); }
+}
+</script>
+</body>
+</html>
