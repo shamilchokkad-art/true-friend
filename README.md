@@ -2,22 +2,22 @@
 
 
 
-# [True Friend] 🎯
+# True Friend 🎯
 
 
 ## Basic Details
-### Team Name: [shamil]
+### Team Name: Shamil
 
 
 ### Team Members
-- Team Lead: [shamil] - [duxford edupark]
+- Team Lead: Shamil - Duxford Edupark
 
 ### Project Description
-[True Friend 🎯 is a fun and completely useless web application that randomly calculates the friendship compatibility between two people. 😂
+True Friend 🎯 is a fun and completely useless web application that randomly calculates the friendship compatibility between two people. 😂
 
 Users enter two names, and the website performs a fake “AI-powered scientific analysis” using animations, random calculations, friendship meters, funny comments, and a final friendship percentage.
 
-The project is intentionally designed as a useless but entertaining application, where the result has absolutely no scientific meaning. The main goal is to create curiosity, interaction, laughter, and a memorable user experience.]
+The project is intentionally designed as a useless but entertaining application, where the result has absolutely no scientific meaning. The main goal is to create curiosity, interaction, laughter, and a memorable user experience.
    
 
 ## Technical Details
@@ -196,13 +196,13 @@ Mobile
 The layout automatically changes for smaller screens.
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
+![Screenshot1](https://github.com/shamilchokkad-art/true-friend/blob/main/c.png)
 *Add caption explaining what this shows*
 
-![Screenshot2](Add screenshot 2 here with proper name)
+![Screenshot2](https://github.com/shamilchokkad-art/true-friend/blob/main/b.png)
 *Add caption explaining what this shows*
 
-![Screenshot3](Add screenshot 3 here with proper name)
+![Screenshot3](https://github.com/shamilchokkad-art/true-friend/blob/main/c.png)
 *Add caption explaining what this shows*
 
 # Diagrams
@@ -273,9 +273,6 @@ System Architecture
         └───────────────┘
 
 *Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
